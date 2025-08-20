@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Coordinate Systems &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Miscellaneous Items" href="misc.html" />
+    <link rel="prev" title="Tools" href="tools.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="misc.html" title="Miscellaneous Items"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Tools"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coordinate Systems</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coordinate-systems">
+<h1>Coordinate Systems<a class="headerlink" href="#coordinate-systems" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://youtu.be/Bsk7_Ij7tVc/">Coordinate System Tutorial</a></p>
+<section id="coordinate-system-touchoff">
+<h2>Coordinate System Touchoff<a class="headerlink" href="#coordinate-system-touchoff" title="Permalink to this heading">¶</a></h2>
+<p>To touch-off an axis, use a QPushButton and QLineEdit to set the touch-off value.
+Optionally you can have a QComboBox to select the Coordinate System to touch off
+to.</p>
+<table class="docutils align-center" id="id1" style="width: 100%">
+<caption><span class="caption-text">Coordinate System Touch Off Controls</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><strong>Control Function</strong></p></td>
+<td><p><strong>Object Type</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Touch Off Axis</p></td>
+<td><p>QPushButton</p></td>
+<td><p>touchoff_pb_(axis letter)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Touch Off Value</p></td>
+<td><p>QLineEdit</p></td>
+<td><p>touchoff_le</p></td>
+</tr>
+<tr class="row-even"><td><p>Coordinate System</p></td>
+<td><p>QComboBox</p></td>
+<td><p>touchoff_system_cb</p></td>
+</tr>
+</tbody>
+</table>
+<p>Optionally you can have a QLineEdit for any axis by adding a string type Dynamic
+Property named <cite>source</cite> to the QPushButton and the value contains the object
+name of the QLineEdit that you want to use. See <a class="reference internal" href="property.html"><span class="doc">Dynamic Properties</span></a></p>
+<img alt="_images/coordinate-01.png" class="align-center" src="_images/coordinate-01.png" />
+<p>As you can see you can have a QLineEdit for each axis.</p>
+<img alt="_images/coordinate-02.png" class="align-center" src="_images/coordinate-02.png" />
+</section>
+<section id="change-coordinate-system">
+<h2>Change Coordinate System<a class="headerlink" href="#change-coordinate-system" title="Permalink to this heading">¶</a></h2>
+<p>To change the coordinate system via a button, use a change_cs_`n` QPushButton
+where <cite>n</cite> is 1-9 for G54 through G59.3</p>
+<table class="docutils align-center" id="id2" style="width: 100%">
+<caption><span class="caption-text">Coordinate System Change Buttons</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><strong>Control Function</strong></p></td>
+<td><p><strong>Object Type</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Change Coordinate System</p></td>
+<td><p>QPushButton</p></td>
+<td><p>change_cs_(n)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Coordinate Systems</a><ul>
+<li><a class="reference internal" href="#coordinate-system-touchoff">Coordinate System Touchoff</a></li>
+<li><a class="reference internal" href="#change-coordinate-system">Change Coordinate System</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tools.html"
+                          title="previous chapter">Tools</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="misc.html"
+                          title="next chapter">Miscellaneous Items</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/coordinates.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="misc.html" title="Miscellaneous Items"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Tools"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coordinate Systems</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

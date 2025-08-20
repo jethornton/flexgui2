@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Plotter &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manual Data Input (MDI)" href="mdi.html" />
+    <link rel="prev" title="Controls" href="controls.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mdi.html" title="Manual Data Input (MDI)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="controls.html" title="Controls"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plotter</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="plotter">
+<h1>Plotter<a class="headerlink" href="#plotter" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://youtu.be/_f9sQWPe_XI">Plotter Tutorial</a></p>
+<p>To add a live G-code plotter, add a QWidget or QFrame and name it <cite>plot_widget</cite>.</p>
+<section id="controls">
+<h2>Controls<a class="headerlink" href="#controls" title="Permalink to this heading">¶</a></h2>
+<p>If you’re using a touch-screen, add pan, zoom, and rotate controls for the
+plotter</p>
+<table class="docutils align-center" id="id1" style="width: 100%">
+<caption><span class="caption-text">Display Controls</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Control</strong></p></td>
+<td><p><strong>Widget</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Rotate View Up</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_rotate_up_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotate View Down</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_rotate_down_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>Rotate View Left</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_rotate_left_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotate View Right</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_rotate_right_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>Pan View Up</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_pan_up_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pan View Down</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_pan_down_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>Pan View Left</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_pan_left_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pan View Right</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_pan_right_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>Zoom View In</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_zoom_in_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zoom View Out</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_zoom_out_pb</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following controls set-predefined views</p>
+<table class="docutils align-center" id="id2" style="width: 100%">
+<caption><span class="caption-text">Display Views</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Control</strong></p></td>
+<td><p><strong>Widget</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>View Perspective</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_p_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View X</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_x_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Y</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_y_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Y2</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_y2_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Z</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_z_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Z2</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_z2_pb</p></td>
+</tr>
+</tbody>
+</table>
+<p>To clear the Live plot</p>
+<table class="docutils align-center" id="id3" style="width: 100%">
+<caption><span class="caption-text">Display Functions</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Control</p></td>
+<td><p>Widget</p></td>
+<td><p>Name</p></td>
+</tr>
+<tr class="row-even"><td><p>Clear Live Plot</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_clear_pb</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="display">
+<h2>Display<a class="headerlink" href="#display" title="Permalink to this heading">¶</a></h2>
+<p>The DRO overlaid onto the plotter can be customized by turning on or off
+various features. Use either a QCheckbox or a QPushButton to toggle these</p>
+<table class="docutils align-center" id="id4" style="width: 100%">
+<caption><span class="caption-text">Display Checkbox Options</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Function</strong></p></td>
+<td><p><strong>Widget</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>View DRO</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_dro_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Machine Limits</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_limits_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Extents Option</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_extents_option_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Live Plot</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_live_plot_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Velocity</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_velocity_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use Metric Units</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_metric_units_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Program</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_program_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Rapids</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_rapids_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Tool</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_tool_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Lathe Radius</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_lathe_radius_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Distance to Go</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_dtg_cb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Offsets</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_offsets_cb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Overlay</p></td>
+<td><p>QCheckBox</p></td>
+<td><p>view_overlay_cb</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id5" style="width: 100%">
+<caption><span class="caption-text">Display PushButton Options</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Function</strong></p></td>
+<td><p><strong>Widget</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>View DRO</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_dro_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Machine Limits</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_limits_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Extents Option</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_extents_option_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Live Plot</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_live_plot_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Velocity</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_velocity_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use Metric Units</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_metric_units_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Program</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_program_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Rapids</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_rapids_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Tool</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_tool_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Lathe Radius</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_lathe_radius_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Distance to Go</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_dtg_pb</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Offsets</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_offsets_pb</p></td>
+</tr>
+<tr class="row-even"><td><p>View Overlay</p></td>
+<td><p>QPushButton</p></td>
+<td><p>view_overlay_pb</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t set the checked property to checked in Qt Designer as this is
+already handled in the code. Once you check an option it is remembered.</p>
+</div>
+</section>
+<section id="menu">
+<h2>Menu<a class="headerlink" href="#menu" title="Permalink to this heading">¶</a></h2>
+<p>The following menu items can set display options. <cite>Menu Name</cite> is what you
+type when creating the Menu, then press enter. All the items are checkbox type
+menu items that stay coordinated with the checkbox of the same option.</p>
+<table class="docutils align-center" id="id6" style="width: 100%">
+<caption><span class="caption-text">Plot Menu Options</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Function</strong></p></td>
+<td><p><strong>Menu Name</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>View DRO</p></td>
+<td><p>DRO</p></td>
+<td><p>actionDRO</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Machine Limits</p></td>
+<td><p>Limits</p></td>
+<td><p>actionLimits</p></td>
+</tr>
+<tr class="row-even"><td><p>View Extents Option</p></td>
+<td><p>Extents Option</p></td>
+<td><p>actionExtents_Option</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Live Plot</p></td>
+<td><p>Live Plot</p></td>
+<td><p>actionLive_Plot</p></td>
+</tr>
+<tr class="row-even"><td><p>View Velocity</p></td>
+<td><p>Velocity</p></td>
+<td><p>actionVelocity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use Metric Units</p></td>
+<td><p>Metric Units</p></td>
+<td><p>actionMetric_Units</p></td>
+</tr>
+<tr class="row-even"><td><p>View Program</p></td>
+<td><p>Program</p></td>
+<td><p>actionProgram</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Rapids</p></td>
+<td><p>Rapids</p></td>
+<td><p>actionRapids</p></td>
+</tr>
+<tr class="row-even"><td><p>View Tool</p></td>
+<td><p>Tool</p></td>
+<td><p>actionTool</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Lathe Radius</p></td>
+<td><p>Lathe Radius</p></td>
+<td><p>actionLathe_Radius</p></td>
+</tr>
+<tr class="row-even"><td><p>View Distance to Go</p></td>
+<td><p>DTG</p></td>
+<td><p>actionDTG</p></td>
+</tr>
+<tr class="row-odd"><td><p>View Offsets</p></td>
+<td><p>Offsets</p></td>
+<td><p>actionOffsets</p></td>
+</tr>
+<tr class="row-even"><td><p>View Overlay</p></td>
+<td><p>Overlay</p></td>
+<td><p>actionOverlay</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once a view selection has been set, Flex GUI remembers it.</p>
+</div>
+<p>The live plot can be cleared from the menu with this menu item.</p>
+<table class="docutils align-center" id="id7" style="width: 100%">
+<caption><span class="caption-text">Plot Menu</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Function</strong></p></td>
+<td><p><strong>Menu Name</strong></p></td>
+<td><p><strong>Object Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Clear Live Plot</p></td>
+<td><p>Clear Live Plot</p></td>
+<td><p>actionClear_Live_Plot</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dro">
+<h2>DRO<a class="headerlink" href="#dro" title="Permalink to this heading">¶</a></h2>
+<p>The font size can be set in the ini file by adding in the [DISPLAY] section
+DRO_FONT_SIZE = n where n is an integer. The default size is 12.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Plotter</a><ul>
+<li><a class="reference internal" href="#controls">Controls</a></li>
+<li><a class="reference internal" href="#display">Display</a></li>
+<li><a class="reference internal" href="#menu">Menu</a></li>
+<li><a class="reference internal" href="#dro">DRO</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="controls.html"
+                          title="previous chapter">Controls</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mdi.html"
+                          title="next chapter">Manual Data Input (MDI)</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/plotter.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mdi.html" title="Manual Data Input (MDI)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="controls.html" title="Controls"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plotter</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

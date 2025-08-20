@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Menu &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Controls" href="controls.html" />
+    <link rel="prev" title="Status Labels" href="labels.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="controls.html" title="Controls"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="labels.html" title="Status Labels"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Menu</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="menu">
+<h1>Menu<a class="headerlink" href="#menu" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://youtu.be/ukwunHGCglk">Adding Menu Items Tutorial</a>
+<a class="reference external" href="https://youtu.be/X_SMoJ9sYbI">Tool Bar Buttons Tutorial</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every menu item has a command button, so you don’t need to use any
+menu items if you don’t want to.</p>
+</div>
+<p>Adding a menu item creates an action. When you create File &gt; Open menu, the
+<cite>actionOpen</cite> action is created.</p>
+<img alt="_images/menu-01.png" class="align-center" src="_images/menu-01.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you use the full-screen option, you will not be able to exit the
+application if you don’t have the Exit action or an Exit Push Button or Press
+ALT-F4 to close the GUI.</p>
+</div>
+<p>This shows the typical menu categories which are the first items in each menu.
+The image is from the Qt Designer.</p>
+<img alt="_images/menu-02.png" class="align-center" src="_images/menu-02.png" />
+<p>The following table shows the menu name you type into Qt Designer and the action
+name that is created by the Qt Designer. Menu categories like <cite>File</cite> don’t
+create an action name.</p>
+<table class="docutils align-center" id="id1" style="width: 100%">
+<caption><span class="caption-text">Menu Items</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><strong>File</strong></p></td>
+<td><p><strong>Action Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Open</p></td>
+<td><p>actionOpen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Edit</p></td>
+<td><p>actionEdit</p></td>
+</tr>
+<tr class="row-even"><td><p>Reload</p></td>
+<td><p>actionReload</p></td>
+</tr>
+<tr class="row-odd"><td><p>Save As</p></td>
+<td><p>actionSave_As</p></td>
+</tr>
+<tr class="row-even"><td><p>Edit Tool Table</p></td>
+<td><p>actionEdit_Tool_Table</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reload Tool Table</p></td>
+<td><p>actionReload_Tool_Table</p></td>
+</tr>
+<tr class="row-even"><td><p>Ladder Editor</p></td>
+<td><p>actionLadder_Editor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quit</p></td>
+<td><p>actionQuit</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Machine</strong></p></td>
+<td><p><strong>Action Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>E Stop</p></td>
+<td><p>actionE_Stop</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power</p></td>
+<td><p>action_Power</p></td>
+</tr>
+<tr class="row-even"><td><p>Run</p></td>
+<td><p>actionRun</p></td>
+</tr>
+<tr class="row-odd"><td><p>Run From Line</p></td>
+<td><p>actionRun_From_Line</p></td>
+</tr>
+<tr class="row-even"><td><p>Step</p></td>
+<td><p>actionStep</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pause</p></td>
+<td><p>actionPause</p></td>
+</tr>
+<tr class="row-even"><td><p>Resume</p></td>
+<td><p>actionResume</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stop</p></td>
+<td><p>actionStop</p></td>
+</tr>
+<tr class="row-even"><td><p>Clear MDI History</p></td>
+<td><p>actionClear_MDI_History</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy MDI History</p></td>
+<td><p>actionCopy_MDI_History</p></td>
+</tr>
+<tr class="row-even"><td><p>Homing</p></td>
+<td><p>this creates a home menu item for each axis</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unhoming</p></td>
+<td><p>this creates a unhome menu item for each axis</p></td>
+</tr>
+<tr class="row-even"><td><p>Clear Offsets</p></td>
+<td><p>this creates a clear offsets for each coordinate system</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Programs</strong></p></td>
+<td><p><strong>Action Name</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Show HAL</p></td>
+<td><p>actionShow_HAL</p></td>
+</tr>
+<tr class="row-even"><td><p>HAL Meter</p></td>
+<td><p>actionHAL_Meter</p></td>
+</tr>
+<tr class="row-odd"><td><p>HAL Scope</p></td>
+<td><p>actionHAL_Scope</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>View</strong></p></td>
+<td><p><strong>Action Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>DRO</p></td>
+<td><p>actionDRO</p></td>
+</tr>
+<tr class="row-odd"><td><p>Limits</p></td>
+<td><p>actionLimits</p></td>
+</tr>
+<tr class="row-even"><td><p>Extents Option</p></td>
+<td><p>actionExtents_Option</p></td>
+</tr>
+<tr class="row-odd"><td><p>Live Plot</p></td>
+<td><p>actionLive_Plot</p></td>
+</tr>
+<tr class="row-even"><td><p>Velocity</p></td>
+<td><p>actionVelocity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metric Units</p></td>
+<td><p>actionMetric_Units</p></td>
+</tr>
+<tr class="row-even"><td><p>Program</p></td>
+<td><p>actionProgram</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rapids</p></td>
+<td><p>actionRapids</p></td>
+</tr>
+<tr class="row-even"><td><p>Tool</p></td>
+<td><p>actionTool</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lathe Radius</p></td>
+<td><p>actionLathe_Radius</p></td>
+</tr>
+<tr class="row-even"><td><p>DTG</p></td>
+<td><p>actionDTG</p></td>
+</tr>
+<tr class="row-odd"><td><p>Offsets</p></td>
+<td><p>actionOffsets</p></td>
+</tr>
+<tr class="row-even"><td><p>Overlay</p></td>
+<td><p>actionOverlay</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clear Live Plot</p></td>
+<td><p>actionClear_Live_Plot</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Help</strong></p></td>
+<td><p><strong>Action Name</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>About</p></td>
+<td><p>actionAbout</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quick Reference</p></td>
+<td><p>actionQuick_Reference</p></td>
+</tr>
+</tbody>
+</table>
+<section id="action-names">
+<h2>Action Names<a class="headerlink" href="#action-names" title="Permalink to this heading">¶</a></h2>
+<p>When you add a menu item, it creates an action and the Object Name is created
+from the menu name automatically.</p>
+<p>The Object Name must match the above items <cite>exactly</cite> in order to be discovered
+by Flex GUI:</p>
+<img alt="_images/actions-01.png" class="align-center" src="_images/actions-01.png" />
+</section>
+<section id="recent-files">
+<h2>Recent Files<a class="headerlink" href="#recent-files" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Recent menu item is added after the Open menu. There must be at
+least one menu item after Open for the Recent menu to be added.</p>
+</div>
+<p>Location of the Recent menu after the Open menu:</p>
+<img alt="_images/menu-03.png" class="align-center" src="_images/menu-03.png" />
+</section>
+<section id="tool-bars">
+<h2>Tool Bars<a class="headerlink" href="#tool-bars" title="Permalink to this heading">¶</a></h2>
+<p>If you right-click on the main window, you can add a Tool Bar:</p>
+<img alt="_images/tool-bar-01.png" class="align-center" src="_images/tool-bar-01.png" />
+<p>To add actions to the Tool Bar, drag them from the Action Editor and drop them
+in the Tool Bar:</p>
+<img alt="_images/tool-bar-02.png" class="align-center" src="_images/tool-bar-02.png" />
+<p>To set the style of a Tool Bar Button, use the action name and replace action
+with <cite>flex_</cite> for example the actionQuit would be <cite>flex_Quit</cite>. See <cite>Tool Bar
+Buttons</cite> in the stylesheet examples.</p>
+</section>
+<section id="shortcut-keys">
+<h2>Shortcut Keys<a class="headerlink" href="#shortcut-keys" title="Permalink to this heading">¶</a></h2>
+<p>Shortcut keys can be added in the Property Editor by clicking in the shortcut
+Value box and pressing the key or key combination you want to use. You can
+change text, icon Text, or tool Tip also.</p>
+<img alt="_images/actions-02.png" class="align-center" src="_images/actions-02.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A toolTip can be handy, however they might not work on touchscreens.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Menu</a><ul>
+<li><a class="reference internal" href="#action-names">Action Names</a></li>
+<li><a class="reference internal" href="#recent-files">Recent Files</a></li>
+<li><a class="reference internal" href="#tool-bars">Tool Bars</a></li>
+<li><a class="reference internal" href="#shortcut-keys">Shortcut Keys</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="labels.html"
+                          title="previous chapter">Status Labels</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="controls.html"
+                          title="next chapter">Controls</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/menu.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="controls.html" title="Controls"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="labels.html" title="Status Labels"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Menu</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

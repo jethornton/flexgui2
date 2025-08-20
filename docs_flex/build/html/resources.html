@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Resources &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="StyleSheet" href="style.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="style.html" title="StyleSheet"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Resources</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="resources">
+<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">¶</a></h1>
+<p>To create a resources.py file with images to use with the .qss stylesheet, start
+by placing all the images in a different directory than the configuration files.
+A subdirectory in the configuration directory is fine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── configs
+   └── my_mill
+       └── images
+</pre></div>
+</div>
+<p>Add the following library if not installed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span>
+</pre></div>
+</div>
+<p>After installing Flex GUI on the CNC menu run <cite>Flex Resources</cite></p>
+<img alt="_images/resources-00.png" class="align-center" src="_images/resources-00.png" />
+<p>Startup</p>
+<img alt="_images/resources-01.png" class="align-center" src="_images/resources-01.png" />
+<p>Next Select Images Directory</p>
+<img alt="_images/resources-02.png" class="align-center" src="_images/resources-02.png" />
+<p>The selected directory is shown in the label</p>
+<img alt="_images/resources-03.png" class="align-center" src="_images/resources-03.png" />
+<p>Next Select Image Files. To select all the images left click on the first one
+and hold down the shift key and left click on the last one. To pick several
+images but not all hold down the ctrl key while you left click on each one.</p>
+<img alt="_images/resources-04.png" class="align-center" src="_images/resources-04.png" />
+<p>The images selected are shown below</p>
+<img alt="_images/resources-05.png" class="align-center" src="_images/resources-05.png" />
+<p>Next Build QRC File</p>
+<img alt="_images/resources-06.png" class="align-center" src="_images/resources-06.png" />
+<p>Next Select Config Directory</p>
+<img alt="_images/resources-07.png" class="align-center" src="_images/resources-07.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Image directory and the configuration directory must be different</p>
+</div>
+<p>Next Build Resources File</p>
+<img alt="_images/resources-08.png" class="align-center" src="_images/resources-08.png" />
+<p>The Flex Resource Builder can be closed now. In the configuration directory you
+will have a resources.py file that contains the images used by the stylesheet.</p>
+<p>Next edit the ini file and in the [DISPLAY] section add the following line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RESOURCES</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>In the [DISPLAY] section add the style sheet</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QSS</span> <span class="o">=</span> <span class="n">xyz</span><span class="o">.</span><span class="n">qss</span>
+</pre></div>
+</div>
+<p>To add an image named my-image.png to a QPushButton with an object name of
+my_pb add the following to the qss file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QPushButton</span><span class="c1">#my_pb {</span>
+        <span class="nb">min</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
+        <span class="nb">min</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">margin</span><span class="p">:</span> <span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">background</span><span class="o">-</span><span class="n">position</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+        <span class="n">background</span><span class="o">-</span><span class="n">origin</span><span class="p">:</span> <span class="n">content</span><span class="p">;</span>
+        <span class="n">background</span><span class="o">-</span><span class="n">clip</span><span class="p">:</span> <span class="n">padding</span><span class="p">;</span>
+        <span class="n">background</span><span class="o">-</span><span class="n">repeat</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+        <span class="n">background</span><span class="o">-</span><span class="n">image</span><span class="p">:</span> <span class="n">url</span><span class="p">(:</span><span class="n">my</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">png</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now when you run the configuration the image will be on the QPushButton</p>
+<img alt="_images/resources-09.png" class="align-center" src="_images/resources-09.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Delete any text in the QPushButton or it will be on top of the image</p>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="style.html"
+                          title="previous chapter">StyleSheet</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/resources.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="style.html" title="StyleSheet"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Resources</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

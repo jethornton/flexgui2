@@ -1,0 +1,302 @@
+#!/usr/bin/env python3
+
+import sys, os, textwrap
+# disable cache usage must be before any local imports
+sys.dont_write_bytecode = True
+
+from functools import partial
+
+from PyQt6.QtWidgets import QApplication, QMainWindow, QColorDialog
+from PyQt6.QtWidgets import QRadioButton, QFontDialog, QFileDialog
+from PyQt6.QtGui import QPixmap, QFont, QFontInfo, QColor
+from PyQt6.QtCore import QSignalBlocker
+from PyQt6 import uic
+
+from libflexgui import qss_images
+from libflexgui import qss_all
+from libflexgui import qss_pushbutton
+from libflexgui import qss_checkbox
+from libflexgui import qss_radiobutton
+from libflexgui import qss_toolbar
+from libflexgui import qss_toolbutton
+from libflexgui import qss_spinbox
+from libflexgui import qss_label
+from libflexgui import qss_containers
+from libflexgui import qss_gradient
+
+class example(QMainWindow):
+	def __init__(self):
+		super().__init__()
+
+		# get the path to the executable
+		self.path = os.path.dirname(os.path.realpath(sys.argv[0]))
+
+		# set the library path
+		if self.path == '/usr/bin':
+			self.gui_path = '/usr/lib/libflexgui'
+		else:
+			self.gui_path = self.path
+		uic.loadUi(os.path.join(self.gui_path, 'qss.ui'), self)
+
+
+class main(QMainWindow):
+	def __init__(self):
+		super().__init__()
+
+		self.example_gui = example()
+
+		# get the path to the executable
+		self.path = os.path.dirname(os.path.realpath(sys.argv[0]))
+
+		# set the library path
+		if self.path == '/usr/bin':
+			self.gui_path = '/usr/lib/libflexgui'
+		else:
+			self.gui_path = self.path
+		uic.loadUi(os.path.join(self.gui_path, 'flexqss.ui'), self)
+		#uic.loadUi(os.path.join(self.gui_path, 'qss.ui'), self)
+
+		self.setGeometry(0, 0, 500, 500)
+		self.setWindowTitle('Flex QSS Creator')
+		qss_all.startup(self)
+		qss_pushbutton.startup(self)
+		qss_checkbox.startup(self)
+		qss_radiobutton.startup(self)
+		qss_toolbar.startup(self)
+		qss_toolbutton.startup(self)
+		qss_spinbox.startup(self)
+		qss_label.startup(self)
+		qss_containers.startup(self)
+		qss_gradient.startup(self)
+		self.setup()
+		self.show()
+
+	def setup(self):
+		self.launch_sample_pb.clicked.connect(self.launch_sample)
+
+		# add box model image to all pages
+		for i in range(7):
+			getattr(self, f'boxmodel_lb_{i}').setPixmap(QPixmap(':/boxmodel.png'))
+		#self.boxmodel_lb.setPixmap(QPixmap(':/boxmodel.png'))
+
+		# Menu Items
+		self.actionSave_As.triggered.connect(self.save)
+
+		# setup stylesheet
+		self.stylesheet = ''
+
+	def color_dialog(self):
+		obj = self.sender().objectName().split('_')[0]
+		state = self.sender().objectName().split('_')[-1]
+		prop = self.sender().property('qss')
+		variable = self.sender().property('var')
+		label = self.sender().property('label')
+		#return
+		if getattr(self, variable):
+			initial_color = QColor(getattr(self, variable))
+		else:
+			initial_color = QColor(0, 0, 0)  # Initial color: Black
+		color_dialog = QColorDialog(self)
+		color_dialog.setOptions(QColorDialog.ColorDialogOption.DontUseNativeDialog | 
+			QColorDialog.ColorDialogOption.ShowAlphaChannel)
+		color_dialog.setCurrentColor(initial_color)
+		if color_dialog.exec():
+			color = color_dialog.currentColor()
+			if color.isValid():
+				setattr(self, variable, color.name())
+				getattr(self, label).setStyleSheet(f'background-color: {color.name()};')
+				setattr(self, f'{obj}_{state}', True)
+		else:
+			setattr(self, variable, False)
+			getattr(self, label).setStyleSheet(f'background-color: none;')
+
+		#print(f'obj {obj}')
+		#print(getattr(self, f'{obj}_{state}'))
+		#print(f'state {state}')
+		#print(f'prop {prop}')
+		#print(f'variable {variable}')
+		#print(f'variable {getattr(self, variable)}')
+		#print(f'label {label}')
+
+	def size(self):
+		obj = self.sender().objectName().split('_')[0]
+		setattr(self, f'{obj}_normal', True)
+
+	def border(self): # can be set in all states
+		text = self.sender().currentText()
+		if text != 'none':
+			obj = self.sender().objectName().split('_')[0]
+			state = self.sender().objectName().split('_')[-1]
+			setattr(self, f'{obj}_{state}', True)
+
+	def font_dialog(self):
+		obj = self.sender().objectName().split('_')[0]
+		options = QFontDialog.FontDialogOption.DontUseNativeDialog
+
+		if getattr(self, f'{obj}_scaleable_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.ScalableFonts
+		elif getattr(self, f'{obj}_non_scaleable_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.NonScalableFonts
+		elif getattr(self, f'{obj}_monospaced_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.MonospacedFonts
+		elif getattr(self, f'{obj}_proportional_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.ProportionalFonts
+
+		if getattr(self, f'{obj}_font_family'):
+			current_font = QFont(getattr(self, f'{obj}_font_family'),
+				getattr(self, f'{obj}_font_size'),
+				getattr(self, f'{obj}_font_weight'),
+				getattr(self, f'{obj}_font_italic'))
+		else:
+			current_font = self.font()
+
+		font, ok = QFontDialog.getFont(current_font, self, "Choose a Font", options)
+		if ok:
+			fontinfo = QFontInfo(font)
+			setattr(self, f'{obj}_font_family', fontinfo.family())
+			setattr(self, f'{obj}_font_size', font.pointSize())
+			setattr(self, f'{obj}_font_style', fontinfo.styleName())
+			setattr(self, f'{obj}_font_weight', fontinfo.weight())
+			setattr(self, f'{obj}_font_italic', fontinfo.italic())
+			setattr(self, f'{obj}_normal', True)
+		else:
+			setattr(self, f'{obj}_font_family', False)
+			setattr(self, f'{obj}_font_size', False)
+			setattr(self, f'{obj}_font_weight', False)
+			setattr(self, f'{obj}_font_weight', False)
+			setattr(self, f'{obj}_font_italic', False)
+
+	def padding(self):
+		obj = self.sender().objectName().split('_')[0]
+		sender_name = self.sender().objectName().split('_')
+		if self.sender().value() > 0:
+			setattr(self, f'{obj}_normal', True)
+			side = False
+			sides = ['left', 'right', 'top', 'bottom']
+			for item in sides:
+				if item in sender_name: # set all to 0
+					side = True
+
+			if side:
+				with QSignalBlocker(getattr(self, f'{obj}_padding_normal')):
+					getattr(self, f'{obj}_padding_normal').setValue(0)
+			else:
+				with QSignalBlocker(getattr(self, f'{obj}_padding_left_normal')):
+					getattr(self, f'{obj}_padding_left_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_padding_right_normal')):
+					getattr(self, f'{obj}_padding_right_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_padding_top_normal')):
+					getattr(self, f'{obj}_padding_top_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_padding_bottom_normal')):
+					getattr(self, f'{obj}_padding_bottom_normal').setValue(0)
+
+	def margin(self):
+		obj = self.sender().objectName().split('_')[0]
+		sender_name = self.sender().objectName().split('_')
+		if self.sender().value() > 0:
+			setattr(self, f'{obj}_normal', True)
+			side = False
+			sides = ['left', 'right', 'top', 'bottom']
+			for item in sides:
+				if item in sender_name: # set all to 0
+					side = True
+
+			if side:
+				with QSignalBlocker(getattr(self, f'{obj}_margin_normal')):
+					getattr(self, f'{obj}_margin_normal').setValue(0)
+			else:
+				with QSignalBlocker(getattr(self, f'{obj}_margin_left_normal')):
+					getattr(self, f'{obj}_margin_left_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_margin_right_normal')):
+					getattr(self, f'{obj}_margin_right_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_margin_top_normal')):
+					getattr(self, f'{obj}_margin_top_normal').setValue(0)
+				with QSignalBlocker(getattr(self, f'{obj}_margin_bottom_normal')):
+					getattr(self, f'{obj}_margin_bottom_normal').setValue(0)
+
+	def indicator(self):
+		obj = self.sender().objectName().split('_')[0]
+		if self.sender().value() > 0:
+			setattr(self, f'{obj}_indicator', True)
+
+	def set_checkable(self):
+		checked = self.sender().isChecked()
+		if checked:
+			self.pushButton.setCheckable(True)
+		else:
+			self.pushButton.setCheckable(False)
+
+	def disable(self, obj):
+		if self.sender().isChecked():
+			self.sender().setText('Enable')
+			getattr(self, obj).setEnabled(False)
+		else:
+			self.sender().setText('Disable')
+			getattr(self, obj).setEnabled(True)
+
+	def launch_sample(self):
+		self.build_stylesheet()
+		self.example_gui.setStyleSheet(self.stylesheet)
+		self.example_gui.show()
+
+	def build_stylesheet(self):
+		self.stylesheet = ''
+
+		if self.mw_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QMainWindow Section */\n\n'
+			self.stylesheet += self.mw_stylesheet.toPlainText()
+
+		if self.fr_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QFrame Section */\n\n'
+			self.stylesheet += self.fr_stylesheet.toPlainText()
+
+		if self.gb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QGroupBox Section */\n\n'
+			self.stylesheet += self.gb_stylesheet.toPlainText()
+
+		if self.pb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QPushButton Section */\n\n'
+			self.stylesheet += self.pb_stylesheet.toPlainText()
+
+		if self.cb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QCheckBox Section */\n\n'
+			self.stylesheet += self.cb_stylesheet.toPlainText()
+
+		if self.rb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QRadioButton Section */\n\n'
+			self.stylesheet += self.rb_stylesheet.toPlainText()
+
+		if self.tbar_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QToolBar Section */\n\n'
+			self.stylesheet += self.tbar_stylesheet.toPlainText()
+
+		if self.tb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QToolButton Section */\n\n'
+			self.stylesheet += self.tb_stylesheet.toPlainText()
+
+		if self.sb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QSpinBox Section */\n\n'
+			self.stylesheet += self.sb_stylesheet.toPlainText()
+
+		if self.lb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QLabel Section */\n\n'
+			self.stylesheet += self.lb_stylesheet.toPlainText()
+
+	def save(self):
+		self.build_stylesheet()
+		file_dialog = QFileDialog()
+		options = QFileDialog.Option.DontUseNativeDialog
+		file_path, file_type = file_dialog.getSaveFileName(None,
+		caption='Save QSS As', directory=os.path.expanduser("~"),
+		filter='QSS Files (*.qss)', options=options)
+		if file_path and self.stylesheet != '':
+			with open(file_path, "w") as f: # clear the file
+				f.write('/* Stylesheet created by Flex QSS Creator */\n')
+
+			with open(file_path, "a") as f:
+				f.write(self.stylesheet)
+
+app = QApplication(sys.argv)
+gui = main()
+sys.exit(app.exec())
+

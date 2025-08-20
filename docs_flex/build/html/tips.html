@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>GUI Tips &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="StyleSheet" href="style.html" />
+    <link rel="prev" title="Master Layout" href="layout.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="style.html" title="StyleSheet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="layout.html" title="Master Layout"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GUI Tips</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="gui-tips">
+<h1>GUI Tips<a class="headerlink" href="#gui-tips" title="Permalink to this heading">¶</a></h1>
+<p>To group items together, use a container like a QFrame, QGroupBox or a
+QTabWidget.</p>
+<p>If the contents of a container are rows and columns after adding at least one
+widget, right click and select <cite>Layout</cite> then <cite>Lay Out in a Grid</cite>. Now you can
+drag and drop widgets into the container. The blue line or red box indicate
+where it will be placed in the grid.</p>
+<img alt="_images/tips-01.png" class="align-center" src="_images/tips-01.png" />
+<p>When using a grid layout for items that may change like Dro labels, change the
+text to represent the longest number including a minus sign. Next, in the
+property editor look at the Width and select (I usually use the column title) a
+widget and set the minimum width a tad bigger than the widest widget in that
+column. This will prevent the column from resizing as the values change.</p>
+<p>For example, the numbers in the Actual column can contain up to 8 characters
+like -23.4567. In the next image no minimum width has been set</p>
+<img alt="_images/tips-02.png" class="align-center" src="_images/tips-02.png" />
+<p>All the cells in the column will have the same width - here you can see it has a
+width of 44</p>
+<img alt="_images/tips-03.png" class="align-center" src="_images/tips-03.png" />
+<p>If we double-click in the label and add -23.4567 the width changes to 61</p>
+<img alt="_images/tips-04.png" class="align-center" src="_images/tips-04.png" />
+<p>I usually set the title of a column width to be a bit wider than the widest
+widget in the column</p>
+<img alt="_images/tips-05.png" class="align-center" src="_images/tips-05.png" />
+<p>If you drag a container into another container that has a layout and it’s real
+short, just set the minimum height to make it larger and easier to drag and drop
+into.</p>
+<p>Ctrl + left click to select several widgets at once to change all their
+properties.</p>
+<p>The Monospace font is good for numbers that need a fixed width like DRO values.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="layout.html"
+                          title="previous chapter">Master Layout</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="style.html"
+                          title="next chapter">StyleSheet</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tips.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="style.html" title="StyleSheet"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="layout.html" title="Master Layout"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GUI Tips</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

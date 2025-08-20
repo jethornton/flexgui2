@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>INI Settings &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Status Labels" href="labels.html" />
+    <link rel="prev" title="Dynamic Properties" href="property.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="labels.html" title="Status Labels"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="property.html" title="Dynamic Properties"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">INI Settings</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ini-settings">
+<h1>INI Settings<a class="headerlink" href="#ini-settings" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://youtu.be/JQXG9I7fwSo">Video Tutorial</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following Flex GUI settings are all located in the [DISPLAY]
+section of your LinuxCNC .ini file.</p>
+</div>
+<section id="using-flex-gui">
+<span id="using-flexgui"></span><h2>Using Flex GUI<a class="headerlink" href="#using-flex-gui" title="Permalink to this heading">¶</a></h2>
+<p>To use the Flex GUI (as opposed to Axis or others), change the DISPLAY value to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISPLAY</span> <span class="o">=</span> <span class="n">flexgui</span>
+</pre></div>
+</div>
+<p>If no GUI is specified then the default GUI will be used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any Flex GUI .ui and .qss files must be in the same LinuxCNC
+configuration directory as the .ini file.</p>
+</div>
+<p>To use your .ui file (created with Qt Designer), add a GUI key to the .ini
+with its <cite>filename</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GUI</span> <span class="o">=</span> <span class="n">my</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">name</span><span class="o">.</span><span class="n">ui</span>
+</pre></div>
+</div>
+</section>
+<section id="themes">
+<span id="installed-themes"></span><h2>Themes<a class="headerlink" href="#themes" title="Permalink to this heading">¶</a></h2>
+<p>Themes are just style sheets that get applied to the widgets. The theme files
+are in the themes directory of the example files if you want to copy and
+customize one of the themes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blue</span><span class="o">.</span><span class="n">qss</span>
+<span class="n">blue</span><span class="o">-</span><span class="n">touch</span><span class="o">.</span><span class="n">qss</span>
+<span class="n">dark</span><span class="o">.</span><span class="n">qss</span>
+<span class="n">dark</span><span class="o">-</span><span class="n">touch</span><span class="o">.</span><span class="n">qss</span>
+<span class="n">keyboard</span><span class="o">.</span><span class="n">qss</span>
+<span class="n">touch</span><span class="o">.</span><span class="n">qss</span>
+</pre></div>
+</div>
+<p>To use a built-in theme with no color changes choose one of the
+following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="n">touch</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="n">keyboard</span>
+</pre></div>
+</div>
+<p>To use a built in theme with coloring choose one of the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="n">blue</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="n">blue</span><span class="o">-</span><span class="n">touch</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="n">dark</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="n">dark</span><span class="o">-</span><span class="n">touch</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Touch themes use tabs set to South for rounding and non touch use tabs
+set to North.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>THEME is checked first then QSS so the first entry found is used.</p>
+</div>
+<p>To use a custom .qss style sheet you created named <cite>lightflex.qss</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QSS</span> <span class="o">=</span> <span class="n">lightflex</span><span class="o">.</span><span class="n">qss</span>
+</pre></div>
+</div>
+<p>For more information on style sheets see <a class="reference internal" href="style.html"><span class="doc">StyleSheet</span></a></p>
+</section>
+<section id="jog-increments">
+<h2>Jog Increments<a class="headerlink" href="#jog-increments" title="Permalink to this heading">¶</a></h2>
+<p>The following settings can be used in the [DISPLAY] section of the ini file to
+preset jog items</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INCREMENTS</span> <span class="o">=</span> <span class="mf">0.100</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">,</span> <span class="mf">0.001</span>
+<span class="ow">or</span>
+<span class="n">INCREMENTS</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">inch</span><span class="p">,</span> <span class="mf">0.5</span> <span class="ow">in</span><span class="p">,</span> <span class="mi">1</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">1</span> <span class="n">mm</span>
+<span class="n">MIN_LINEAR_VELOCITY</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">MAX_LINEAR_VELOCITY</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">DEFAULT_LINEAR_VELOCITY</span> <span class="o">=</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>[DISPLAY] INCREMENTS must be a comma seperated list or it will be
+ignored.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Jog incremnts can have unit lables, the following are valid unit
+labels cm, mm, um, inch, in or mil. If no unit labels are found the the
+configuration units are used.</p>
+</div>
+</section>
+<section id="startup-file">
+<h2>Startup File<a class="headerlink" href="#startup-file" title="Permalink to this heading">¶</a></h2>
+<p>To automatically open a NC file on startup, add the OPEN_FILE key with any
+valid path. Use ~/ as a shortcut to the users home directory. Use ./ to indicate
+that the file is in the configuration directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Full</span> <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span>
+<span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">john</span><span class="o">/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">myconfig</span><span class="o">/</span><span class="n">welcome</span><span class="o">.</span><span class="n">ngc</span>
+<span class="ow">or</span> <span class="n">use</span> <span class="n">the</span> <span class="o">~</span> <span class="k">for</span> <span class="n">the</span> <span class="n">users</span> <span class="n">home</span> <span class="n">directory</span>
+<span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">flex_examples</span><span class="o">/</span><span class="n">probe_sim</span><span class="o">/</span><span class="n">square</span><span class="o">.</span><span class="n">ngc</span>
+<span class="ow">or</span> <span class="n">use</span> <span class="n">the</span> <span class="o">./</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">current</span> <span class="n">configuration</span> <span class="n">directory</span>
+<span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="o">./</span><span class="n">welcome</span><span class="o">.</span><span class="n">ngc</span>
+<span class="ow">or</span> <span class="n">use</span> <span class="n">the</span> <span class="o">../</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">directory</span> <span class="n">of</span> <span class="n">the</span> <span class="n">configuration</span>
+<span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="o">../</span><span class="n">welcome</span><span class="o">.</span><span class="n">ngc</span>
+</pre></div>
+</div>
+</section>
+<section id="file-location">
+<h2>File Location<a class="headerlink" href="#file-location" title="Permalink to this heading">¶</a></h2>
+<p>Likewise, to specify a default location for NC files, add the PROGRAM_PREFIX
+item.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROGRAM_PREFIX</span> <span class="o">=</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">john</span><span class="o">/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">myconfig</span>
+<span class="ow">or</span>
+<span class="n">PROGRAM_PREFIX</span> <span class="o">=</span> <span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">flex_examples</span><span class="o">/</span><span class="n">probe_sim</span>
+<span class="ow">or</span>
+<span class="n">PROGRAM_PREFIX</span> <span class="o">=</span> <span class="o">./</span>
+<span class="ow">or</span>
+<span class="n">PROGRAM_PREFIX</span> <span class="o">=</span> <span class="o">../</span>
+</pre></div>
+</div>
+</section>
+<section id="tool-table-editor">
+<h2>Tool Table Editor<a class="headerlink" href="#tool-table-editor" title="Permalink to this heading">¶</a></h2>
+<p>To specify a different tool table editor add an entry to the [DISPLAY] section.
+If no entry is found then the default tool editor is used</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TOOL_EDITOR</span> <span class="o">=</span> <span class="n">tooledit</span>
+</pre></div>
+</div>
+<p>To control the columns displayed by the default tool editor add any of the valid
+column specifiers separated by a space.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TOOL_EDITOR</span> <span class="o">=</span> <span class="n">tooledit</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">u</span> <span class="n">v</span> <span class="n">w</span> <span class="n">diam</span> <span class="n">front</span> <span class="n">back</span> <span class="n">orien</span>
+</pre></div>
+</div>
+<p>If no entry is found then the axes in the configuration and diameter are shown.
+Tool, Pocket and Comment are always shown.</p>
+</section>
+<section id="resource-file">
+<h2>Resource File<a class="headerlink" href="#resource-file" title="Permalink to this heading">¶</a></h2>
+<p>To use a .py resource file (to add images to buttons with your qss stylesheet)
+place the .py resource file in the configuration directory and add the
+following line to the .ini file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RESOURCES</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>See the section on Resources for more info.</p>
+</section>
+<section id="file-extensions">
+<h2>File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this heading">¶</a></h2>
+<p>The keyboard file dialog defaults to <cite>*.ngc</cite> and this ignores case. To
+specify the file extensions you want the file dialog to show, add an
+EXTENSIONS key with the desired extensions separated by a comma. The
+extensions must be in the format <cite>*.ext</cite> with the asterisk and dot</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXTENSIONS</span> <span class="o">=</span> <span class="o">*.</span><span class="n">nc</span><span class="p">,</span> <span class="o">*.</span><span class="n">G</span><span class="o">-</span><span class="n">code</span><span class="p">,</span> <span class="o">*.</span><span class="n">ngc</span><span class="p">,</span> <span class="o">*.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="screen-size">
+<h2>Screen Size<a class="headerlink" href="#screen-size" title="Permalink to this heading">¶</a></h2>
+<p>To control the initial size of the screen, add either:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SIZE</span> <span class="o">=</span> <span class="n">minimized</span>
+<span class="n">SIZE</span> <span class="o">=</span> <span class="n">normal</span>
+<span class="n">SIZE</span> <span class="o">=</span> <span class="n">maximized</span>
+<span class="n">SIZE</span> <span class="o">=</span> <span class="n">full</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Full size screen does not have any window controls. Make sure
+there is a way to close the GUI like an Exit button or you may not be able to
+close the application. As a last-resort, pressing ALT-F4 will close it.</p>
+</div>
+</section>
+<section id="plotter">
+<h2>Plotter<a class="headerlink" href="#plotter" title="Permalink to this heading">¶</a></h2>
+<p>The plotter background color can be set in the [FLEXGUI] section of the ini. The
+value is the Red,Greed,Blue color numbers from 0 to 1 with no space. So an entry
+of 0.0,0.0,0.0 is black and 1.0,1.0,1.0 is white. Use a RGB 0-1 Color Picker to
+select the RGB values.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FLEXGUI</span><span class="p">]</span>
+<span class="n">PLOT_BACKGROUND_COLOR</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>The plotter orientation can be set to one of the following x, x2, y, y2, z, or p.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">DISPLAY</span><span class="p">]</span>
+<span class="n">VIEW</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+</section>
+<section id="colors">
+<h2>Colors<a class="headerlink" href="#colors" title="Permalink to this heading">¶</a></h2>
+<p>The E-Stop can have a static color for Open and Closed.</p>
+<p>The Power Button can have a static color for Off and On.</p>
+<p>Create a key in the ini file called FLEXGUI and use the following to
+control the static color of these items. The value can be any valid color
+specification in the RGB, RGBA or Hex color format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FLEXGUI</span><span class="p">]</span>
+<span class="n">ESTOP_OPEN_COLOR</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span>
+<span class="n">ESTOP_CLOSED_COLOR</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">77</span>
+<span class="n">POWER_OFF_COLOR</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span>
+<span class="n">POWER_ON_COLOR</span> <span class="o">=</span> <span class="c1">#00FF00</span>
+<span class="n">PROBE_ENABLE_ON_COLOR</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span>
+<span class="n">PROBE_ENABLE_OFF_COLOR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">125</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Color pairs need to have both colors specified or the color will only
+toggle once.</p>
+</div>
+<p>Another way to achieve this is is via adding and editing a .qss stylesheet
+file. See the <a class="reference internal" href="style.html"><span class="doc">StyleSheet</span></a> section for more info.</p>
+</section>
+<section id="led-defaults">
+<span id="id1"></span><h2>LED Defaults<a class="headerlink" href="#led-defaults" title="Permalink to this heading">¶</a></h2>
+<p>LED buttons can have defaults set in the ini file. This makes it easier to have
+consistent LED size, position and colors. These options go in the [FLEXGUI]
+section.</p>
+<p>The color options can be specified using HEX, RGB or RGBA.</p>
+<p>Valid RGB(A) Red, Green, Blue (Alpha) values are 0 to 255.</p>
+<p>Valid HEX values are #000000 to #ffffff</p>
+<p>In PyQt6 the Alpha channel is 0 to 255. 0 represents a fully transparent color,
+while 255 represents a fully opaque color. If Alpha is ommitted then it’s set to
+fully opaque or 255.</p>
+<p>The Diameter and Offset values are whole numbers only.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FLEXGUI</span><span class="p">]</span>
+<span class="n">LED_DIAMETER</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">LED_RIGHT_OFFSET</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">LED_TOP_OFFSET</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">LED_ON_COLOR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">LED_OFF_COLOR</span><span class="o">=</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span>
+</pre></div>
+</div>
+<p>For more information on LED buttons see <a class="reference internal" href="controls.html#led-buttons"><span class="std std-ref">LED Buttons</span></a></p>
+</section>
+<section id="touch-screens">
+<h2>Touch Screens<a class="headerlink" href="#touch-screens" title="Permalink to this heading">¶</a></h2>
+<p>Options for touch screen users.</p>
+<p>Set the touch screen file chooser to automatically adjust the width by adding the
+following to the FLEXGUI section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FLEXGUI</span><span class="p">]</span>
+<span class="n">TOUCH_FILE_WIDTH</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">INI Settings</a><ul>
+<li><a class="reference internal" href="#using-flex-gui">Using Flex GUI</a></li>
+<li><a class="reference internal" href="#themes">Themes</a></li>
+<li><a class="reference internal" href="#jog-increments">Jog Increments</a></li>
+<li><a class="reference internal" href="#startup-file">Startup File</a></li>
+<li><a class="reference internal" href="#file-location">File Location</a></li>
+<li><a class="reference internal" href="#tool-table-editor">Tool Table Editor</a></li>
+<li><a class="reference internal" href="#resource-file">Resource File</a></li>
+<li><a class="reference internal" href="#file-extensions">File Extensions</a></li>
+<li><a class="reference internal" href="#screen-size">Screen Size</a></li>
+<li><a class="reference internal" href="#plotter">Plotter</a></li>
+<li><a class="reference internal" href="#colors">Colors</a></li>
+<li><a class="reference internal" href="#led-defaults">LED Defaults</a></li>
+<li><a class="reference internal" href="#touch-screens">Touch Screens</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="property.html"
+                          title="previous chapter">Dynamic Properties</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="labels.html"
+                          title="next chapter">Status Labels</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ini.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="labels.html" title="Status Labels"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="property.html" title="Dynamic Properties"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">INI Settings</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

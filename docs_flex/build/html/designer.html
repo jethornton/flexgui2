@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Qt Designer &#8212; Flex GUI  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dynamic Properties" href="property.html" />
+    <link rel="prev" title="Installing" href="install.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="property.html" title="Dynamic Properties"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Qt Designer</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="qt-designer">
+<h1>Qt Designer<a class="headerlink" href="#qt-designer" title="Permalink to this heading">¶</a></h1>
+<section id="installing-the-qt-designer">
+<span id="install-designer"></span><h2>Installing the Qt Designer<a class="headerlink" href="#installing-the-qt-designer" title="Permalink to this heading">¶</a></h2>
+<p>In a terminal, install Qt Designer 5 with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Qt6 Designer is not required nor better; Qt5 Designer is fine.</p>
+</div>
+</section>
+<section id="building-a-gui">
+<span id="build-gui"></span><h2>Building a GUI<a class="headerlink" href="#building-a-gui" title="Permalink to this heading">¶</a></h2>
+<p>Run the Qt Designer from the Applications &gt; Programming menu and create a new
+<cite>Main Window</cite></p>
+<img alt="_images/designer-01.png" class="align-center" src="_images/designer-01.png" />
+<p>To add a Tool Bar, right click on the main window and select <cite>Add Tool Bar</cite></p>
+<img alt="_images/designer-02.png" class="align-center" src="_images/designer-02.png" />
+<p>To add a Menu, type in the menu area and press enter</p>
+<img alt="_images/designer-03.png" class="align-center" src="_images/designer-03.png" />
+<p>When you create a Menu item it creates an action; this action can be dragged to
+the Tool Bar to create a tool bar button</p>
+<img alt="_images/designer-04.png" class="align-center" src="_images/designer-04.png" />
+<p>Adding items from the Widget Box is drag-and-drop. To create a basic layout from
+Containers, add two Frames and a Tab Widget</p>
+<img alt="_images/designer-05.png" class="align-center" src="_images/designer-05.png" />
+<p>Right click in the QMainWindow and select Lay out –&gt; Lay out Vertically</p>
+<img alt="_images/designer-06.png" class="align-center" src="_images/designer-06.png" />
+<img alt="_images/designer-07.png" class="align-center" src="_images/designer-07.png" />
+<p>Add a Push Button to the QFrame, then right click on the frame or the QFrame in
+the Object Inspector and set the lay out to <cite>grid</cite></p>
+<img alt="_images/designer-08.png" class="align-center" src="_images/designer-08.png" />
+<img alt="_images/designer-09.png" class="align-center" src="_images/designer-09.png" />
+<p>After dragging a widget into the window, make sure you use the correct
+objectName for that widget. For example the E-Stop button is called estop_pb.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each object name must be unique; designer will not allow duplicate
+names.</p>
+</div>
+<p>Save the GUI in the configuration directory alongside your .ini file.</p>
+<p>You can start Qt5 Designer from a terminal with <cite>designer &amp;</cite> which spawns a new
+process (gives you back the terminal prompt.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is an documented issue with Qt5 Designer and bold fonts not
+appearing properly.</p>
+</div>
+</section>
+<section id="qt6-designer">
+<h2>Qt6 Designer<a class="headerlink" href="#qt6-designer" title="Permalink to this heading">¶</a></h2>
+<p>Qt6 Designer can be installed from a terminal with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">designer</span><span class="o">-</span><span class="n">qt6</span>
+</pre></div>
+</div>
+<p>To run Qt6 Designer you must use the full path to the executable</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">qt6</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">designer</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Qt Designer</a><ul>
+<li><a class="reference internal" href="#installing-the-qt-designer">Installing the Qt Designer</a></li>
+<li><a class="reference internal" href="#building-a-gui">Building a GUI</a></li>
+<li><a class="reference internal" href="#qt6-designer">Qt6 Designer</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install.html"
+                          title="previous chapter">Installing</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="property.html"
+                          title="next chapter">Dynamic Properties</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/designer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="property.html" title="Dynamic Properties"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flex GUI  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Qt Designer</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

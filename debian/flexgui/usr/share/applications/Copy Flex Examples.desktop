@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Copy Flex Examples
+Exec=flexcopy
+Icon=linuxcncicon
+Categories=Development;Engineering;X-CNC;
+Terminal=false
+StartupNotify=true
+StartupWMClass=flexcopy
+GenericName=Flex GUI
+Comment=Copy Flex Examples
+
+Name[en_US]=Copy Flex Examples
