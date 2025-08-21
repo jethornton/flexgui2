@@ -22,14 +22,30 @@ from libflexgui import utilities
 from libflexgui import shutdown
 
 class KeyboardJog(QObject):
-	def __init__(self, parent):
+	def __init__(self, window):
 		super().__init__()
 	def eventFilter(self, obj, event):
 		if event.type() == QEvent.Type.KeyPress:
 			if not event.isAutoRepeat():
-				print(f'KeyPress {event.key()}')
+				#print(f'KeyPress {event.key()}')
 				if event.key() == Qt.Key.Key_Up:
-					print('Key_Up')
+					window.key_lb.setText('KeyPress Key_Up')
+					return True  # Consume the event
+				elif event.key() == Qt.Key.Key_Down:
+					window.key_lb.setText('KeyPress Key_Down')
+					return True  # Consume the event
+				elif event.key() == Qt.Key.Key_PageUp:
+					window.key_lb.setText('KeyPress Key_PageUp')
+					return True  # Consume the event
+				elif event.key() == Qt.Key.Key_PageDown:
+					window.key_lb.setText('KeyPress Key_PageDown')
+					return True  # Consume the event
+				elif event.key() == Qt.Key.Key_Left:
+					window.key_lb.setText('KeyPress Key_Left')
+					return True  # Consume the event, preventing QTabWidget from processing it
+				elif event.key() == Qt.Key.Key_Right:
+					window.key_lb.setText('KeyPress Key_Right')
+					return True  # Consume the event, preventing QTabWidget from processing it
 
 		return super().eventFilter(obj, event) # pass the event on if not used
 
@@ -241,7 +257,7 @@ class flexgui(QMainWindow):
 		self.one_second_timer = QTimer(self)
 		self.one_second_timer.start(1000) # milliseconds
 
-		# install the event filter
+		# install the KeyboardJog event filter
 		self.keyboard_jog = KeyboardJog(self)
 		app.installEventFilter(self.keyboard_jog)
 
@@ -257,10 +273,6 @@ class flexgui(QMainWindow):
 				self.showFullScreen()
 		else:
 			self.show()
-
-		# install event filter on self I think
-		#self.installEventFilter(self)
-		#self.key = Qt.Key.Key_unknown
 
 	# this can import a module from a file for resources.py in a config dir
 	def module_from_file(self, module_name, file_path):
@@ -326,5 +338,5 @@ class flexgui(QMainWindow):
 			self.help_dialog.close()
 
 app = QApplication(sys.argv)
-gui = flexgui()
+window = flexgui()
 sys.exit(app.exec())
