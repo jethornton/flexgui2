@@ -9,7 +9,7 @@ from functools import partial
 
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.uic import loadUi
-from PyQt6.QtCore import Qt, QTimer, QEvent
+from PyQt6.QtCore import QObject, Qt, QTimer, QEvent
 from PyQt6.QtGui import QKeyEvent
 
 import linuxcnc, hal
@@ -21,11 +21,24 @@ from libflexgui import dialogs
 from libflexgui import utilities
 from libflexgui import shutdown
 
+class KeyboardJog(QObject):
+	def __init__(self, parent):
+		super().__init__()
+	def eventFilter(self, obj, event):
+		if event.type() == QEvent.Type.KeyPress:
+			if not event.isAutoRepeat():
+				print(f'KeyPress {event.key()}')
+				if event.key() == Qt.Key.Key_Up:
+					print('Key_Up')
+
+		return super().eventFilter(obj, event) # pass the event on if not used
+
+
 class flexgui(QMainWindow):
 	def __init__(self):
 		super().__init__()
 
-		self.flex_version = '1.2.2'
+		self.flex_version = '2.0.0'
 		try:
 			import psutil
 		except Exception as err:
@@ -228,6 +241,9 @@ class flexgui(QMainWindow):
 		self.one_second_timer = QTimer(self)
 		self.one_second_timer.start(1000) # milliseconds
 
+		# install the event filter
+		self.keyboard_jog = KeyboardJog(self)
+		app.installEventFilter(self.keyboard_jog)
 
 		# set the inital screen size
 		if screen_size:
@@ -292,25 +308,8 @@ class flexgui(QMainWindow):
 			print(f"Key Released: {key_text}")
 	'''
 
+	'''
 	def eventFilter(self, source, event):
-		'''
-		if event.type() == QEvent.Type.KeyPress:
-			#print(f'KeyPress self.key {self.key} event.key() {event.key()}')
-			if self.key != event.key():
-				print(f'Key Press: {event.key()} [{source}]')
-				self.key = event.key()
-		elif event.type() == QEvent.Type.KeyRelease:
-			if event.type() != QEvent.Type.KeyPress:
-				print(f'Key Release: {event.key()} [{source}]')
-				self.key = Qt.Key.Key_unknown
-		'''
-
-
-
-			#print(f'KeyRelease self.key {self.key} event.key() {event.key()}')
-			#
-			#
-
 		if source.objectName() in self.number_le and event.type() == QEvent.Type.MouseButtonRelease:
 			dialogs.numbers(self, source)
 		elif source.objectName() in self.nccode_le and event.type() == QEvent.Type.MouseButtonRelease:
@@ -320,7 +319,7 @@ class flexgui(QMainWindow):
 		elif source.objectName() in self.touch_sb and event.type() == QEvent.Type.MouseButtonRelease:
 			dialogs.spinbox_numbers(self, source.parent())
 		return super().eventFilter(source, event)
-
+	'''
 	def closeEvent(self, event):
 		shutdown.save_settings(self)
 		if self.help_dialog is not None:
