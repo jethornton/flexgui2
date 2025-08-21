@@ -18,8 +18,11 @@ from libflexgui import read_ini
 from libflexgui import startup
 from libflexgui import status
 from libflexgui import dialogs
+from libflexgui import keyboard_jog
 from libflexgui import utilities
 from libflexgui import shutdown
+
+#def jog(parent, action, axis=None, direction=None):
 
 class KeyboardJog(QObject):
 	def __init__(self, window):
@@ -27,26 +30,30 @@ class KeyboardJog(QObject):
 	def eventFilter(self, obj, event):
 		if event.type() == QEvent.Type.KeyPress:
 			if not event.isAutoRepeat():
-				print(f'KeyPress {event.key()}')
 				if event.key() == Qt.Key.Key_Up:
 					window.key_lb.setText('KeyPress Key_Up')
+					keyboard_jog.jog(window, True, 'y', 'p')
 					return True  # Consume the event
 				elif event.key() == Qt.Key.Key_Down:
 					window.key_lb.setText('KeyPress Key_Down')
+					keyboard_jog.jog(window, True, 'y', 'n')
 					return True  # Consume the event
 				elif event.key() == Qt.Key.Key_PageUp:
 					window.key_lb.setText('KeyPress Key_PageUp')
+					keyboard_jog.jog(window, True, 'z', 'p')
 					return True  # Consume the event
 				elif event.key() == Qt.Key.Key_PageDown:
 					window.key_lb.setText('KeyPress Key_PageDown')
+					keyboard_jog.jog(window, True, 'z', 'n')
 					return True  # Consume the event
 				elif event.key() == Qt.Key.Key_Left:
 					window.key_lb.setText('KeyPress Key_Left')
+					keyboard_jog.jog(window, True, 'x', 'n')
 					return True  # Consume the event, preventing QTabWidget from processing it
 				elif event.key() == Qt.Key.Key_Right:
-					event.ignore() # Ignore right arrow key event
 					window.key_lb.setText('KeyPress Key_Right')
-					print('KeyPress Key_Right')
+					keyboard_jog.jog(window, True, 'x', 'n')
+					event.ignore() # Ignore right arrow key event
 					return True  # Consume the event, preventing QTabWidget from processing it
 				elif event.isAutoRepeat():
 					if event.key() == Qt.Key.Key_Left or event.key() == Qt.Key.Key_Right:
@@ -81,6 +88,7 @@ class KeyboardJog(QObject):
 		elif event.type() == QEvent.Type.KeyRelease:
 			if not event.isAutoRepeat():
 				window.key_lb.setText('KeyRelease')
+				keyboard_jog.jog(window, False)
 				return True  # Consume the event, preventing QTabWidget from processing it
 
 		return super().eventFilter(obj, event) # pass the event on if not used
