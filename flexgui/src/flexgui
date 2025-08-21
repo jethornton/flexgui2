@@ -29,6 +29,8 @@ class KeyboardJog(QObject):
 		super().__init__()
 	def eventFilter(self, obj, event):
 		if event.type() == QEvent.Type.KeyPress:
+			if window.keyboard_jogging:
+				return True  # Consume the event
 			if not event.isAutoRepeat():
 				if event.key() == Qt.Key.Key_Up:
 					window.key_lb.setText('KeyPress Key_Up')
@@ -53,6 +55,7 @@ class KeyboardJog(QObject):
 				elif event.key() == Qt.Key.Key_Right:
 					window.key_lb.setText('KeyPress Key_Right')
 					keyboard_jog.jog(window, True, 'x', 'n')
+					window.keyboard_jogging = True
 					event.ignore() # Ignore right arrow key event
 					return True  # Consume the event, preventing QTabWidget from processing it
 				elif event.isAutoRepeat():
@@ -89,6 +92,7 @@ class KeyboardJog(QObject):
 			if not event.isAutoRepeat():
 				window.key_lb.setText('KeyRelease')
 				keyboard_jog.jog(window, False)
+				window.keyboard_jogging = False
 				return True  # Consume the event, preventing QTabWidget from processing it
 
 		return super().eventFilter(obj, event) # pass the event on if not used
@@ -143,6 +147,7 @@ class flexgui(QMainWindow):
 		self.tool_in_spindle = self.status.tool_in_spindle
 		self.status_speed_setting = self.status.settings[2] # spindle speed
 		self.help_dialog = None
+		self.keyboard_jogging = False
 
 		self.home_dir = os.path.expanduser('~')
 
