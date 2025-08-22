@@ -1,9 +1,3 @@
-flexgui (2.0.0) unstable; urgency=medium
-
-  * Add Keyboard Jog
-
- -- John Thornton <dev@gnipsel.com>  Thu, 21 Aug 2025 11:05:55 -0500
-
 flexgui (1.2.2) unstable; urgency=medium
 
   * Add HAL I/O Controls
