@@ -2,31 +2,35 @@ import linuxcnc as emc
 
 def jog(parent, action, axis=None, direction=None):
 	vel = parent.jog_vel_sl.value() / 60
-	parent.status.poll()
-	print(f'parent.status.kinematics_type {parent.status.kinematics_type}')
-	print(f'emc.KINEMATICS_IDENTITY {emc.KINEMATICS_IDENTITY}')
-	print(f'parent.status.motion_mode {parent.status.motion_mode}')
-	print(f'emc.TRAJ_MODE_FREE {emc.TRAJ_MODE_FREE}')
-	print(f'emc.TRAJ_MODE_TELEOP {emc.TRAJ_MODE_TELEOP}')
-	#print(f'{}')
-
-	if parent.status.kinematics_type == emc.KINEMATICS_IDENTITY:
-		print('KINEMATICS_IDENTITY')
-		if parent.status.motion_mode == emc.TRAJ_MODE_FREE:
-			teleop_mode = 0
-			jog_mode = True
-		else:
-			teleop_mode = 1
-			jog_mode = False
-
-
+	if direction == 'neg':
+		vel = -vel
+	if parent.status.motion_mode == emc.TRAJ_MODE_FREE:
+		teleop_mode = 0
+		joint_jog = True
 	else:
-		print('Unknown Kinematics')
+		teleop_mode = 1
+		joint_jog = False
 
-	if action:
-		print(f'jog {action} axis {axis} direction {direction} vel {vel}')
+	if parent.status.task_mode == emc.MODE_MANUAL and action:
+		#print(f'jog {action} axis {axis} direction {direction} vel {vel}')
+		print(f'parent.command.jog(.emc.JOG_CONTINUOUS, {joint_jog}, {axis}, {vel})')
 	else:
-		print(f'jog {action}')
+		print(f'parent.command.jog(.emc.JOG_STOP, {joint_jog}, {axis}')
+
+
+
+		#print(f'parent.status.kinematics_type {parent.status.kinematics_type}')
+		#print(f'emc.KINEMATICS_IDENTITY {emc.KINEMATICS_IDENTITY}')
+		#print(f'parent.status.motion_mode {parent.status.motion_mode}')
+		#print(f'emc.TRAJ_MODE_FREE {emc.TRAJ_MODE_FREE}')
+		#print(f'emc.TRAJ_MODE_TELEOP {emc.TRAJ_MODE_TELEOP}')
+		#print(f'{}')
+
+	#if parent.status.kinematics_type == emc.KINEMATICS_IDENTITY:
+	#	print('KINEMATICS_IDENTITY')
+	#else:
+	#	print('Unknown Kinematics')
+
 
 
 '''

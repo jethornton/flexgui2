@@ -35,42 +35,48 @@ class KeyboardJog(QObject):
 				if window.keyboard_jogging:
 					return True  # Consume the event
 				if not event.isAutoRepeat():
-					if event.key() == Qt.Key.Key_Up:
-						window.key_lb.setText('KeyPress Key_Up')
-						keyboard_jog.jog(window, True, 'y', 'p')
-						window.keyboard_jogging = True
-						return True  # Consume the event
-					elif event.key() == Qt.Key.Key_Down:
-						window.key_lb.setText('KeyPress Key_Down')
-						keyboard_jog.jog(window, True, 'y', 'n')
-						window.keyboard_jogging = True
-						return True  # Consume the event
-					elif event.key() == Qt.Key.Key_PageUp:
-						window.key_lb.setText('KeyPress Key_PageUp')
-						keyboard_jog.jog(window, True, 'z', 'p')
-						window.keyboard_jogging = True
-						return True  # Consume the event
-					elif event.key() == Qt.Key.Key_PageDown:
-						window.key_lb.setText('KeyPress Key_PageDown')
-						keyboard_jog.jog(window, True, 'z', 'n')
-						window.keyboard_jogging = True
-						return True  # Consume the event
-					elif event.key() == Qt.Key.Key_Left:
-						window.key_lb.setText('KeyPress Key_Left')
-						keyboard_jog.jog(window, True, 'x', 'n')
+					if event.key() == Qt.Key.Key_Left:
+						print(f'Qt.Key.Key_Left {event.key()}')
+						keyboard_jog.jog(window, True, '0', 'neg')
 						window.keyboard_jogging = True
 						return True  # Consume the event, preventing QTabWidget from processing it
 					elif event.key() == Qt.Key.Key_Right:
-						window.key_lb.setText('KeyPress Key_Right')
-						keyboard_jog.jog(window, True, 'x', 'n')
+						print(f'Qt.Key.Key_Right {event.key()}')
+						keyboard_jog.jog(window, True, '0', 'pos')
 						window.keyboard_jogging = True
 						event.ignore() # Ignore right arrow key event
 						return True  # Consume the event, preventing QTabWidget from processing it
+					elif event.key() == Qt.Key.Key_Up:
+						print(f'Qt.Key.Key_Up {event.key()}')
+						keyboard_jog.jog(window, True, '1', 'pos')
+						window.keyboard_jogging = True
+						return True  # Consume the event
+					elif event.key() == Qt.Key.Key_Down:
+						print(f'Qt.Key.Key_Down {event.key()}')
+						keyboard_jog.jog(window, True, '1', 'neg')
+						window.keyboard_jogging = True
+						return True  # Consume the event
+					elif event.key() == Qt.Key.Key_PageUp:
+						print(f'Qt.Key.Key_PageUp {event.key()}')
+						keyboard_jog.jog(window, True, '2', 'pos')
+						window.keyboard_jogging = True
+						return True  # Consume the event
+					elif event.key() == Qt.Key.Key_PageDown:
+						print(f'Qt.Key.Key_PageDown {event.key()}')
+						keyboard_jog.jog(window, True, '2', 'neg')
+						window.keyboard_jogging = True
+						return True  # Consume the event
 
 		elif event.type() == QEvent.Type.KeyRelease:
 			if not event.isAutoRepeat() and window.keyboard_jogging:
-				window.key_lb.setText('KeyRelease')
-				keyboard_jog.jog(window, False)
+				window.key_lb.setText(f'KeyRelease {event.key()}')
+				match event.key():
+					case Qt.Key.Key_Left | Qt.Key.Key_Right:
+						keyboard_jog.jog(window, False, '0')
+					case Qt.Key.Key_Up | Qt.Key.Key_Down:
+						keyboard_jog.jog(window, False, '1')
+					case Qt.Key.Key_PageUp | Qt.Key.Key_PageDown:
+						keyboard_jog.jog(window, False, '2')
 				window.keyboard_jogging = False
 				return True  # Consume the event, preventing QTabWidget from processing it
 
