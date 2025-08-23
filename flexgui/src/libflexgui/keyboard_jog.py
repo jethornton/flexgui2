@@ -16,7 +16,12 @@ def jog(parent, action, axis=None, direction=None):
 
 	if parent.status.task_mode == emc.MODE_MANUAL and action:
 		#print(f'jog {action} axis {axis} direction {direction} vel {vel}')
-		print(f'parent.command.jog(.emc.JOG_CONTINUOUS, {joint_jog}, {axis}, {vel})')
+
+		distance = parent.jog_modes_cb.currentData()
+		if distance:
+			print(f'parent.command.jog(.emc.JOG_INCREMENT, {joint_jog}, {axis}, {vel}, {distance})')
+		else:
+			print(f'parent.command.jog(.emc.JOG_CONTINUOUS, {joint_jog}, {axis}, {vel})')
 	else:
 		print(f'parent.command.jog(.emc.JOG_STOP, {joint_jog}, {axis}')
 
