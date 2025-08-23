@@ -11,13 +11,16 @@ def jog(parent, action, axis=None, direction=None):
 		teleop_mode = 1
 		joint_jog = False
 
+	print(f'jog mode text {parent.jog_modes_cb.currentText()}')
+	print(f'jog mode data {parent.jog_modes_cb.currentData()}')
+
 	if parent.status.task_mode == emc.MODE_MANUAL and action:
 		#print(f'jog {action} axis {axis} direction {direction} vel {vel}')
 		print(f'parent.command.jog(.emc.JOG_CONTINUOUS, {joint_jog}, {axis}, {vel})')
 	else:
 		print(f'parent.command.jog(.emc.JOG_STOP, {joint_jog}, {axis}')
 
-
+	# jog_modes_cb
 
 		#print(f'parent.status.kinematics_type {parent.status.kinematics_type}')
 		#print(f'emc.KINEMATICS_IDENTITY {emc.KINEMATICS_IDENTITY}')

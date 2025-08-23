@@ -69,7 +69,6 @@ class KeyboardJog(QObject):
 
 		elif event.type() == QEvent.Type.KeyRelease:
 			if not event.isAutoRepeat() and window.keyboard_jogging:
-				window.key_lb.setText(f'KeyRelease {event.key()}')
 				match event.key():
 					case Qt.Key.Key_Left | Qt.Key.Key_Right:
 						keyboard_jog.jog(window, False, '0')
